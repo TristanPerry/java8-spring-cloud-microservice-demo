@@ -13,7 +13,7 @@ I have intentionally used two resource servers in this demo, because I wanted to
 
 This is to start showing the power of Spring Cloud and the microservice approach, since in production we might have 10 *reports-api* microservice instances. So when *business-logic-api* uses Feign client to 'speak to' *reports-api*, Feign uses Eureka (and then Ribbon) to choose which *reports-api* to actually contact for its request.
 
-And since, as I mentioned earlier, JWT is stateless, we can also scale *jwt-auth-server* too since we don't have to worry about sticky sessions. (Eureka can naturally be scaled as well)[http://cloud.spring.io/spring-cloud-static/spring-cloud.html#_peer_awareness].
+And since, as I mentioned earlier, JWT is stateless, we can also scale *jwt-auth-server* too since we don't have to worry about sticky sessions. [Eureka can naturally be scaled as well](http://cloud.spring.io/spring-cloud-static/spring-cloud.html#_peer_awareness).
 
 ## How it Works
 
