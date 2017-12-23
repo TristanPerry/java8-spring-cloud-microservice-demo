@@ -21,8 +21,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * Create a quick in memory list of two users (with different roles) who can login to the system:
-     *   - user - password
-     *   - admin - password
+     * - user - password
+     * - admin - password
+     *
      * @param auth
      * @throws Exception
      */

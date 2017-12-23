@@ -26,14 +26,14 @@ public class OAuth2JwtConfig extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private AuthenticationManager authManager;
 
-	@Bean
-	public JwtAccessTokenConverter accessTokenConverter() {
+    @Bean
+    public JwtAccessTokenConverter accessTokenConverter() {
         Assert.notNull(jwtSigningKey, "No JWT signing key present, check config params for application.jwtSigningKey");
 
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-		converter.setSigningKey(jwtSigningKey);
-		return converter;
-	}
+        converter.setSigningKey(jwtSigningKey);
+        return converter;
+    }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
