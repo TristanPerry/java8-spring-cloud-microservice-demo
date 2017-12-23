@@ -1,0 +1,18 @@
+server:
+  port: 8001
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: eureka-server
+
+eureka:
+  # We are the Eureka server, so naturally don't try to register with ourselves
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  instance:
+    hostname: localhost
+  server:
+    waitTimeInMsWhenSyncEmpty: 0

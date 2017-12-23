@@ -1,0 +1,32 @@
+server:
+  port: 8003
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: business-logic-api
+  datasource:
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+
+eureka:
+  client:
+    healthcheck:
+       enabled: true
+    serviceUrl:
+       defaultZone: http://localhost:8001/eureka/
+   # TODO wot?
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    preferIpAddress: true
+
+security:
+  oauth2:
+    resource:
+      jwt:
+        keyValue: fO6KnpqPw7l1zCLM0bDswTcRJ
+
+# Stop Feign calls (via the underlying Ribbon technology) after 5-10 secs
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 10000
