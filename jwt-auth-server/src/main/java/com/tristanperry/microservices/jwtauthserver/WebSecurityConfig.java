@@ -35,17 +35,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().withUser("admin")
                 .password("password").authorities("ROLE_ADMIN");
     }
-
-    @Override
-    // TODO This is no longer needed AFAIK
-    // protected void configure(HttpSecurity http) throws Exception {
-    //     http
-    //             .authorizeRequests()
-    //             .antMatchers("/validate/jwt", "/user", "/check/user").permitAll()
-    //             .anyRequest().authenticated()
-    //             .and()
-    //             .logout()
-    //             .permitAll();
-    // }
-
 }

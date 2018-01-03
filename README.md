@@ -23,6 +23,8 @@ However this demo is setup such that you can just pull the code, and run each of
 
 ## REST Calls to Use This Demo
 
+_If you use [Postman](https://www.getpostman.com), you can import the environment and collection from the /postman-collection/ folder which will get you up and running with the below a lot quicker - especially the authenticated calls, since the JWT bearer token from the authenticate call is [saved as a variable](http://blog.getpostman.com/2014/01/27/extracting-data-from-responses-and-chaining-requests/) and is then automatially sent up in subsequent requests._
+
 **To Authenticate (and thus get a JWT bearer token)**
 
 The authentication endpoint requires an *Authorization: Basic ...* header to be sent up, where the value is the [base64 encoded](https://www.base64encode.org/) version of the clientId and secretKey, aka:
@@ -52,8 +54,10 @@ We can then use any of our authenticated endpoints simply by passing a header of
 These endpoints are currently:
 
 * HTTP GET http://localhost:8003/fizz-buzz
-* HTTP GET http://localhost:8003/fizz/collate
+* HTTP GET http://localhost:8003/fizz-buzz/{id}
+* HTTP POST http://localhost:8003/fizz-buzz with JSON such as: _{"fizz": "blah","buzz": "buzzing","fizzBuzz": true}_
 * HTTP GET http://localhost:8003/fizz/report/1
+* HTTP GET http://localhost:8004/fizz/collate
 
 We can also get basic data from our public (unauthenticated) endpoint via HTTP GET http://localhost:8003/public/fizz-buzz (this endpoint naturally doesn't require an Authorization header).
 

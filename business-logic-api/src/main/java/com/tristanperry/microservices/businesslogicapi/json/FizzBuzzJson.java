@@ -3,21 +3,21 @@ package com.tristanperry.microservices.businesslogicapi.json;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class FizzBuzz {
+public class FizzBuzzJson {
 
     private String fizz;
     private String buzz;
     private Boolean isFizzBuzz;
 
-    public FizzBuzz() {
+    public FizzBuzzJson() {
 
     }
 
-    public FizzBuzz(String fizz) {
+    public FizzBuzzJson(String fizz) {
         this.fizz = fizz;
     }
 
-    public FizzBuzz(String fizz, String buzz, Boolean isFizzBuzz) {
+    public FizzBuzzJson(String fizz, String buzz, Boolean isFizzBuzz) {
         this.fizz = fizz;
         this.buzz = buzz;
         this.isFizzBuzz = isFizzBuzz;
@@ -49,7 +49,7 @@ public class FizzBuzz {
 
     @Override
     public String toString() {
-        return "FizzBuzz{" +
+        return "FizzBuzzJson{" +
                 "fizz='" + fizz + '\'' +
                 ", buzz='" + buzz + '\'' +
                 ", isFizzBuzz=" + isFizzBuzz +

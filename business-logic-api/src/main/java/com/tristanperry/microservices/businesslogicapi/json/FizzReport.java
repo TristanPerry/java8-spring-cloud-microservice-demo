@@ -5,22 +5,22 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FizzReport {
 
-    private FizzBuzz fizzBuzz;
+    private FizzBuzzJson fizzBuzz;
     private FizzReportRow reportRow;
 
     public FizzReport() {
     }
 
-    public FizzReport(FizzBuzz fizzBuzz, FizzReportRow reportRow) {
+    public FizzReport(FizzBuzzJson fizzBuzz, FizzReportRow reportRow) {
         this.fizzBuzz = fizzBuzz;
         this.reportRow = reportRow;
     }
 
-    public FizzBuzz getFizzBuzz() {
+    public FizzBuzzJson getFizzBuzz() {
         return fizzBuzz;
     }
 
-    public void setFizzBuzz(FizzBuzz fizzBuzz) {
+    public void setFizzBuzz(FizzBuzzJson fizzBuzz) {
         this.fizzBuzz = fizzBuzz;
     }
 

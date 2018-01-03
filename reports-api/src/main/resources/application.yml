@@ -15,7 +15,6 @@ eureka:
        enabled: true
     serviceUrl:
        defaultZone: http://localhost:8001/eureka/
-   # TODO wot?
   instance:
     leaseRenewalIntervalInSeconds: 5
     preferIpAddress: true
