@@ -51,4 +51,13 @@ public class FizzBuzzRepositoryTest {
         assertEquals(fizzBuzzRepository.findByIsFizzBuzz(Boolean.TRUE).size(), 4L);
     }
 
+    @Test
+    public void testFindAll() {
+        assertNotNull(fizzBuzzRepository.save(new FizzBuzz("Fizzing0", "Buzzing0", Boolean.TRUE)));
+        assertNotNull(fizzBuzzRepository.save(new FizzBuzz("Fizzing1", "Buzzing1", Boolean.TRUE)));
+        assertNotNull(fizzBuzzRepository.save(new FizzBuzz("Fizzing2", "Buzzing2", Boolean.FALSE)));
+
+        assertEquals(fizzBuzzRepository.findAll().size(), 3L);
+    }
+
 }

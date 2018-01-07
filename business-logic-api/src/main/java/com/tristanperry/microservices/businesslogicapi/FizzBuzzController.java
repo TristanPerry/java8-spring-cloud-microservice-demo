@@ -39,7 +39,7 @@ public class FizzBuzzController {
     @GetMapping("/fizz-buzz")
     @PreAuthorize("#oauth2.hasScope('read')")
     public List<FizzBuzzJson> getAllFizzBuzzes() {
-        final List<FizzBuzzJson> result = StreamSupport.stream(fizzBuzzRepository.findAll().spliterator(), false)
+        final List<FizzBuzzJson> result = fizzBuzzRepository.findAll().stream()
                 .map(entity -> new FizzBuzzJson(entity.getFizz(), entity.getBuzz(), entity.getFizzBuzz()))
                 .collect(Collectors.toList());
 
