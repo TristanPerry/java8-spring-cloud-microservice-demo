@@ -35,4 +35,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().withUser("admin")
                 .password("password").authorities("ROLE_ADMIN");
     }
+
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/public/**").permitAll()
+                .antMatchers("/**").denyAll();
+    }
 }

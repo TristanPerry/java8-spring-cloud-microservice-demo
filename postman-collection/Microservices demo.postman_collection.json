@@ -7,170 +7,353 @@
 	},
 	"item": [
 		{
-			"name": "Authenticate",
-			"event": [
+			"name": "JwtAuthServer",
+			"description": "Endpoints for JwtAuthServer (port 8002)",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "83938bcd-c4f1-4738-9094-43c03c6c0030",
-						"type": "text/javascript",
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"postman.setEnvironmentVariable(\"jwtAccessToken\", jsonData.access_token);"
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic ZGVmYXVsdC1jbGllbnQ6c3Nzc2hoaA=="
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
+					"name": "Authenticate",
+					"event": [
 						{
-							"key": "client_id",
-							"value": "default-client",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "username",
-							"value": "user",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "password",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "grant_type",
-							"value": "password",
-							"description": "",
-							"type": "text"
+							"listen": "test",
+							"script": {
+								"id": "83938bcd-c4f1-4738-9094-43c03c6c0030",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"jwtAccessToken\", jsonData.access_token);"
+								]
+							}
 						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8002/oauth/token",
-					"protocol": "http",
-					"host": [
-						"localhost"
 					],
-					"port": "8002",
-					"path": [
-						"oauth",
-						"token"
-					]
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGVmYXVsdC1jbGllbnQ6c3Nzc2hoaA=="
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "user",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8002/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"oauth",
+								"token"
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "Get Public Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8002/public/data",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"public",
+								"data"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Non-Public Data (Will Fail)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8002/non-public/data",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"non-public",
+								"data"
+							]
+						},
+						"description": "Demonstration of allowing just /public endpoints under the JWT server, as per the HttpSecurity config"
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "FizzBuzz Get All",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{jwtAccessToken}}"
+			"name": "BusinessLogicApi",
+			"description": "Endpoints for the BusinessLogicApi",
+			"item": [
+				{
+					"name": "FizzBuzz Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwtAccessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8003/fizz-buzz",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"fizz-buzz"
+							]
+						},
+						"description": ""
 					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8003/fizz-buzz",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8003",
-					"path": [
-						"fizz-buzz"
-					]
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "FizzBuzz Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwtAccessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fizz\": \"blah\",\n\t\"buzz\": \"buzzing\",\n\t\"fizzBuzz\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8003/fizz-buzz",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"fizz-buzz"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "FizzBuzz Get Single",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwtAccessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8003/fizz-buzz/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"fizz-buzz",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "FizzBuzz Get Unauthenticated Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8003/public/fizz-buzz",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"public",
+								"fizz-buzz"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Fizz (ReportsApi Feign Client) Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwtAccessToken}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8003/fizz/report/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"fizz",
+								"report",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "FizzBuzz Create",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{jwtAccessToken}}"
+			"name": "ReportsApi",
+			"description": "Endpoints from the ReportsApi",
+			"item": [
+				{
+					"name": "Fizz Collate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwtAccessToken}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8004/fizz/collate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"fizz",
+								"collate"
+							]
+						},
+						"description": ""
 					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"fizz\": \"blah\",\n\t\"buzz\": \"buzzing\",\n\t\"fizzBuzz\": true\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8003/fizz-buzz",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8003",
-					"path": [
-						"fizz-buzz"
-					]
-				},
-				"description": ""
-			},
-			"response": []
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "FizzBuzz Get Single",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{jwtAccessToken}}"
+			"name": "EurekaServer",
+			"description": "Endpoints from EurekaServer",
+			"item": [
+				{
+					"name": "Registered Microservices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8001/eureka/apps",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"eureka",
+								"apps"
+							]
+						},
+						"description": ""
 					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8003/fizz-buzz/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8003",
-					"path": [
-						"fizz-buzz",
-						"1"
-					]
-				},
-				"description": ""
-			},
-			"response": []
+					"response": []
+				}
+			]
 		}
 	]
 }
