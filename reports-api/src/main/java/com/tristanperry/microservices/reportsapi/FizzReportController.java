@@ -1,6 +1,6 @@
 package com.tristanperry.microservices.reportsapi;
 
-import com.tristanperry.microservices.reportsapi.json.FizzReportRow;
+import com.tristanperry.microservices.commonresourceservices.json.FizzReportRow;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

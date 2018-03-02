@@ -263,7 +263,7 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8003/fizz/report/1",
+							"raw": "http://localhost:8003/fizz/report",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -271,8 +271,7 @@
 							"port": "8003",
 							"path": [
 								"fizz",
-								"report",
-								"1"
+								"report"
 							]
 						},
 						"description": ""

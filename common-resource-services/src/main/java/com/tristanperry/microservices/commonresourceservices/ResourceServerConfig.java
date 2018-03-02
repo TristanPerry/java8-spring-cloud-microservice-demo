@@ -1,4 +1,4 @@
-package com.tristanperry.microservices.businesslogicapi;
+package com.tristanperry.microservices.commonresourceservices;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

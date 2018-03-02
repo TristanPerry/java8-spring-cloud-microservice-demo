@@ -1,6 +1,7 @@
 package com.tristanperry.microservices.businesslogicapi.json;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.tristanperry.microservices.commonresourceservices.json.FizzReportRow;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FizzReport {

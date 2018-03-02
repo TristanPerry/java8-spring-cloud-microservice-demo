@@ -1,10 +1,12 @@
 package com.tristanperry.microservices.businesslogicapi.json;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.tristanperry.microservices.businesslogicapi.model.FizzBuzz;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FizzBuzzJson {
 
+    private Long id;
     private String fizz;
     private String buzz;
     private Boolean isFizzBuzz;
@@ -17,10 +19,19 @@ public class FizzBuzzJson {
         this.fizz = fizz;
     }
 
-    public FizzBuzzJson(String fizz, String buzz, Boolean isFizzBuzz) {
-        this.fizz = fizz;
-        this.buzz = buzz;
-        this.isFizzBuzz = isFizzBuzz;
+    public FizzBuzzJson(FizzBuzz entity) {
+        this.id  = entity.getId();
+        this.fizz = entity.getFizz();
+        this.buzz = entity.getBuzz();
+        this.isFizzBuzz = entity.getFizzBuzz();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFizz() {
@@ -50,7 +61,8 @@ public class FizzBuzzJson {
     @Override
     public String toString() {
         return "FizzBuzzJson{" +
-                "fizz='" + fizz + '\'' +
+                "id=" + id +
+                ", fizz='" + fizz + '\'' +
                 ", buzz='" + buzz + '\'' +
                 ", isFizzBuzz=" + isFizzBuzz +
                 '}';

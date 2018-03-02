@@ -63,12 +63,9 @@ We can also get basic data from our public (unauthenticated) endpoint via HTTP G
 
 ## Future Work Planned
 
-I'll be re-visting this demo over the coming weeks to make a few small improvements to it, such as:
+I've been re-visting this demo since it was first published, to make small improvements to it. Other future work planned includes:
 
-* Make use of the H2 database I've configured, via Spring Data. I'll then aim to add more RESTful endpoints, such as PUT, POST, DELETE etc, to the existing controllers.
 * Currently the bearer token is manually captured and passed in the single Feign client example; this would be better as an interceptor.
-* Adding unit tests where they'd be useful.
 * Enable the refresh token ability, since currently the bearer tokens expire after a set time with no way to renew it.
-* Maybe re-organise common classes (ResourceServerConfig and FizzReportRow) into a common area.
 
 I hope you have found this useful. Please feel free to get in touch if you have any questions or comments. Thanks!

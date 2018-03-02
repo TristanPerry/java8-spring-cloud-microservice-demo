@@ -1,4 +1,4 @@
-package com.tristanperry.microservices.businesslogicapi.json;
+package com.tristanperry.microservices.commonresourceservices.json;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

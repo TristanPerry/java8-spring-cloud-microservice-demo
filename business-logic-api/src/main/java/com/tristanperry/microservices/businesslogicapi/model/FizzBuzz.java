@@ -1,7 +1,5 @@
 package com.tristanperry.microservices.businesslogicapi.model;
 
-import com.tristanperry.microservices.businesslogicapi.json.FizzBuzzJsonRequest;
-
 import javax.persistence.*;
 
 @Entity

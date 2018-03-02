@@ -1,6 +1,6 @@
 package com.tristanperry.microservices.businesslogicapi.feign;
 
-import com.tristanperry.microservices.businesslogicapi.json.FizzReportRow;
+import com.tristanperry.microservices.commonresourceservices.json.FizzReportRow;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestHeader;
